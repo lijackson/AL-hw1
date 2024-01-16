@@ -9,7 +9,7 @@ def main():
         m = dm_control.mujoco.MjModel.from_xml_path("worm.xml")
         d = dm_control.mujoco.MjData(m)
 
-        motor_names = ["motor1", "motor2", "motor3", "motor4", "motor5", "motor6"]
+        motor_names = ["motor1", "motor2", "motor3", "motor4", "motor5", "motor6", "motor7", "motor8", "motor9", "motor10"]
         motor_ids = [dm_control.mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_ACTUATOR, m_name) for m_name in motor_names]
 
         with mujoco.viewer.launch_passive(m, d) as viewer:
@@ -18,11 +18,15 @@ def main():
             viewer.cam.elevation = -16
             viewer.cam.distance = 3.5
             viewer.cam.lookat[:] = [0.0, 0.0, 0.75]
+            
+            wavelen = 30
+            pd = 25
+
 
             for t in range(1000):
                 offset = 0
                 for i in motor_ids:
-                    d.ctrl[i] = 50*math.sin((t + offset*60) * 0.02)
+                    d.ctrl[i] = 50*math.sin((t + offset*wavelen) /-pd)
                     offset+=1
 
                 dm_control.mujoco.mj_step(m, d)
