@@ -1,0 +1,56 @@
+<mujoco>
+    <visual>
+        <headlight ambient="1 1 1" diffuse="1 1 1" specular="0.1 0.1 0.1"/>
+        <map fogstart="3" fogend="5" force="0.1" zfar="10"/>
+        <rgba haze="0.3 0.4 0.5 1" fog="0.3 0.4 0.5 1"/>
+        <quality shadowsize="2048"/>
+    </visual>
+
+    <worldbody>
+        <light diffuse="1 1 1" pos="0 0 3" dir="0 -1 0"/>
+        <geom type="plane" size="5 5 0.1" rgba="0 0 1 .5"/>
+
+        <body name="head" pos="0 0 0.2">
+            <joint type="free"/>
+            <geom type="box" size="0.11 0.05 0.05" rgba=".5 .5 .5 1"/>
+            
+            <body pos="0.2 0 0">
+                <joint name="spine1" type="hinge" limited="true" range="-30 30" axis="0 1 0"/>
+                <geom type="box" size="0.11 0.05 0.05" rgba=".4 .4 .4 1"/>
+
+                <body pos="0.2 0 0">
+                    <joint name="spine2" type="hinge" limited="true" range="-30 30" axis="0 1 0"/>
+                    <geom type="box" size="0.11 0.05 0.05" rgba=".3 .3 .3 1"/>
+
+                    <body pos="0.2 0 0">
+                        <joint name="spine3" type="hinge" limited="true" range="-30 30" axis="0 1 0"/>
+                        <geom type="box" size="0.11 0.05 0.05" rgba=".2 .2 .2 1"/>
+
+                        <body pos="0.2 0 0">
+                            <joint name="spine4" type="hinge" limited="true" range="-30 30" axis="0 1 0"/>
+                            <geom type="box" size="0.11 0.05 0.05" rgba=".1 .1 .1 1"/>
+                            <body pos="0.2 0 0">
+                                <joint name="spine5" type="hinge" limited="true" range="-30 30" axis="0 1 0"/>
+                                <geom type="box" size="0.11 0.05 0.05" rgba=".2 .2 .2 1"/>
+
+                                <body pos="0.2 0 0">
+                                    <joint name="spine6" type="hinge" limited="true" range="-30 30" axis="0 1 0"/>
+                                    <geom type="box" size="0.11 0.05 0.05" rgba=".3 .3 .3 1"/>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <motor joint="spine1" name="motor1" />
+        <motor joint="spine2" name="motor2" />
+        <motor joint="spine3" name="motor3" />
+        <motor joint="spine4" name="motor4" />
+        <motor joint="spine5" name="motor5" />
+        <motor joint="spine6" name="motor6" />
+    </actuator>
+</mujoco>
